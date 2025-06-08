@@ -3,9 +3,6 @@ const urlsToCache = [
   "./",
   "./index.html",
   "./gracz.html",
-  "./kapitan.html",
-  "./kibic.html",
-  "./reklama.html"
 ];
 
 self.addEventListener("install", event => {
