@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2d2dff" />
+  <link rel="manifest" href="manifest.json">
+  <title>ARENA - Demo PWA</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      color: #333;
+    }
+    h1 {
+      color: #2d2dff;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .role-selector {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      width: 100%;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+    .card h2 {
+      margin-bottom: 0.5rem;
+      color: #2d2dff;
+    }
+  </style>
+</head>
+<body>
+  <h1>ARENA – Wybierz rolę</h1>
+  <div class="role-selector">
+    <div class="card" onclick="location.href='gracz.html'">
+      <h2>🎮 Gracz</h2>
+      <p>Dołącz do turnieju, śledź wyniki</p>
+    </div>
+    <div class="card" onclick="location.href='kapitan.html'">
+      <h2>👑 Kapitan Ligii</h2>
+      <p>Zarządzaj rozgrywkami i uczestnikami</p>
+    </div>
+    <div class="card" onclick="location.href='kibic.html'">
+      <h2>👀 Kibic</h2>
+      <p>Obserwuj mecze i statystyki</p>
+    </div>
+    <div class="card" onclick="location.href='reklama.html'">
+      <h2>📢 Reklamodawca</h2>
+      <p>Dodaj reklamy i sponsoruj turnieje</p>
+    </div>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(reg => console.log('SW zarejestrowany:', reg.scope))
+          .catch(err => console.error('Błąd rejestracji SW:', err));
+      });
+    }
+  </script>
+</body>
+</html>
